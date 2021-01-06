@@ -45,7 +45,7 @@ flutter:
   - assets/login/loginIcon.svg
   - assets/login/iconEye.svg
   - assets/comom/fundo.svg
-  - assets/comom/fundopng.png
+  - assets/comom/fundo.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
