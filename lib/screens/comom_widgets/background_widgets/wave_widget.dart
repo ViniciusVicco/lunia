@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as Math;
+import 'clipper_widget.dart';
 
-import 'package:lunia/screens/comomWidgets/clipper_widget.dart';
+
 
 class WaveWidget extends StatefulWidget {
   final Size size;
