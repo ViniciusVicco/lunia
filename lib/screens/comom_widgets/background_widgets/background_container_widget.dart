@@ -18,7 +18,7 @@ class BackGroundContainerWidget extends StatelessWidget {
       child: Stack(
         children: [
           Container(
-            height: height* 0.4,
+            height: height* 0.38,
             decoration: BoxDecoration(
                 image: DecorationImage(image: AssetImage('assets/comom/fundo.png'),
                     fit: BoxFit.cover,

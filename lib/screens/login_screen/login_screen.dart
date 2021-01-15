@@ -19,6 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
     final double height = MediaQuery.of(context).size.height;
+    final Color selectedColor = Color(0xff825904);
 
 
     return Scaffold(
@@ -157,7 +158,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 child: Text(
                                   "Cadastre-se",
                                   style: TextStyle(
-                                    color: Colors.orange[700],
+                                    color: selectedColor,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                 ),
                               ),

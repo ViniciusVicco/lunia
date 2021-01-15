@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 
 class CustomTextHint extends StatelessWidget {
   final String text;
+  final double size;
 
-  CustomTextHint({@required this.text});
+  CustomTextHint({@required this.text, this.size});
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
       style: TextStyle(
-        fontSize: 13,
+        fontSize: size?? 14,
         color: Colors.grey[500],
       ),
     );

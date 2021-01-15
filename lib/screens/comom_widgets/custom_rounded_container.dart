@@ -9,6 +9,7 @@ class CustomroundedContainer extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
+        color: Colors.white,
           border: Border.all(color: cor!=null ? cor : Colors.black),
           borderRadius: BorderRadius.circular(10)),
       child: child,
