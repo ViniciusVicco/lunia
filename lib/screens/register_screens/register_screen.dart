@@ -5,15 +5,38 @@ import 'package:lunia/screens/comom_widgets/custom_rounded_container.dart';
 import 'package:lunia/screens/comom_widgets/custom_texts.dart';
 import 'package:lunia/screens/comom_widgets/rounded_container.dart';
 
-class RegisterScreen extends StatelessWidget {
+class RegisterScreen extends StatefulWidget {
+  @override
+  _RegisterScreenState createState() => _RegisterScreenState();
+}
+
+class _RegisterScreenState extends State<RegisterScreen> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  DateTime _dateTime;
+
+  DateTime _dateTime = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
     final double height = MediaQuery.of(context).size.height;
-    final Color selectedColor = Color(0xff825904);
+    final Color selectedColor = Theme.of(context).colorScheme.primary;
+
+    _selectDate(BuildContext context) async {
+      final DateTime picked = await showDatePicker(
+          context: context,
+          initialDate: _dateTime,
+          firstDate: DateTime(1880),
+          lastDate: DateTime.now(),
+          initialDatePickerMode: DatePickerMode.year,
+          cancelText: 'Cancelar',
+          confirmText: 'Confirmar',
+          helpText: 'Selecione a data de nascimento',
+      );
+      if (picked != null && picked != _dateTime)
+        setState(() {
+          _dateTime = picked;
+        });
+    }
 
     return Scaffold(
       resizeToAvoidBottomPadding: false,
@@ -118,34 +141,39 @@ class RegisterScreen extends StatelessWidget {
                           SizedBox(
                             height: height * 0.012,
                           ),
-                          Container(
-                            alignment: Alignment.center,
-                            width: width * 0.34,
-                            height: height * 0.07,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              border: Border.all(
-                                  color: selectedColor.withOpacity(0.4)),
-                              color: selectedColor.withOpacity(0.4),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Text(
-                                  "23/12/2021",
-                                  style: TextStyle(color: selectedColor),
-                                ),
-                                IconButton(
-                                    icon: Icon(
-                                      Icons.date_range,
-                                      color: selectedColor,
-                                    ),
-                                    onPressed: null)
-                              ],
+                          GestureDetector(
+                            onTap: () {
+                              _selectDate(context);
+                            },
+                            child: Container(
+                              alignment: Alignment.center,
+                              width: width * 0.34,
+                              height: height * 0.07,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                border: Border.all(
+                                    color: selectedColor.withOpacity(0.4)),
+                                color: selectedColor.withOpacity(0.4),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    "${_dateTime.day}/${_dateTime.month}/${_dateTime.year}",
+                                    style: TextStyle(color: selectedColor),
+                                  ),
+                                  IconButton(
+                                      icon: Icon(
+                                        Icons.date_range,
+                                        color: selectedColor,
+                                      ),
+                                      onPressed: null)
+                                ],
+                              ),
                             ),
                           ),
                           SizedBox(
-                            height: height * 0.03,
+                            height: height * 0.01,
                           ),
                           Row(
                             children: [
@@ -158,10 +186,17 @@ class RegisterScreen extends StatelessWidget {
                                   color: selectedColor,
                                 ),
                               )),
-                              Container(
-                                child: SvgPicture.asset('assets/comom/btnProsseguir.svg'),
+                              SizedBox(
+                                width: width * 0.1,
+                              ),
+                              GestureDetector(
+                                onTap: () { Navigator.of(context).pushNamed('/register2');
+                                },
+                                child: Container(
+                                  child: SvgPicture.asset(
+                                      'assets/comom/btnProsseguir.svg'),
+                                ),
                               )
-                              
                             ],
                           ),
                         ],

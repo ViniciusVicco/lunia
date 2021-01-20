@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lunia/screens/login_screen/login_screen.dart';
-import 'package:lunia/screens/register_screen/register_screen.dart';
+import 'package:lunia/screens/register_screens/register_screen.dart';
+import 'package:lunia/screens/register_screens/register_screen2.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -16,11 +18,13 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       routes: {
         '/': (context) => LoginScreen(),
-        '/register': (context) => RegisterScreen(),
+        '/register1': (context) => RegisterScreen(),
+        '/register2': (context) => RegisterScreen2(),
       },
       theme: ThemeData(
         primaryColor: Colors.white,
         primarySwatch: Colors.blue,
+        colorScheme: ColorScheme.light(primary: const Color(0xff825904)),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       initialRoute: '/',
