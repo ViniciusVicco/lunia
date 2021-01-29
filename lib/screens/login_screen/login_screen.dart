@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lunia/screens/comom_widgets/background_widgets/background_container_widget.dart';
 import 'package:lunia/screens/comom_widgets/custom_rounded_container.dart';
 import 'package:lunia/screens/comom_widgets/custom_texts.dart';
+import 'package:lunia/screens/comom_widgets/form_field_widget.dart';
 
 
 
@@ -95,52 +96,64 @@ class _LoginScreenState extends State<LoginScreen> {
                           SizedBox(
                             height: height * 0.01,
                           ),
-                          CustomroundedContainer(
-                            child: Column(
-                              children: [
-                                TextFormField(
-                                  validator: (password) {
-                                    if (password.isEmpty) {
-                                      return 'Campo senha vazio!';
-                                    }
-                                    if (password.length < 9) {
-                                      return 'No mínimo 8 carácteres!';
-                                    }
-                                    return null;
-                                  },
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                  ),
-                                  decoration: InputDecoration(
-                                      hintText: "Digite sua senha",
-                                      border: InputBorder.none,
-                                      contentPadding: EdgeInsets.symmetric(
-                                          vertical: 15, horizontal: 15),
-                                      suffixIcon: GestureDetector(
-                                        onTap: () {
-                                          setState(() {
-                                            hidePassword = !hidePassword;
-                                          });
-                                        },
-                                        child: hidePassword? Container(
-                                          child: SvgPicture.asset(
-                                            'assets/login/iconEye.svg',
-                                            width: 2,
-                                            height: 2,
-                                          ),
-                                        ):
-                                        Container(
-                                          child: SvgPicture.asset(
-                                            'assets/login/iconEyeOculto.svg',
-                                            width: 2,
-                                            height: 2,
-                                          ),
-                                        ),
-                                      )),
-                                  obscureText: hidePassword,
-                                ),
-                              ],
-                            ),
+                          Stack(
+                            children: [
+//                                TextFormField(
+//                                  validator: (password) {
+//                                    if (password.isEmpty) {
+//                                      return 'Campo senha vazio!';
+//                                    }
+//                                    if (password.length < 9) {
+//                                      return 'No mínimo 8 carácteres!';
+//                                    }
+//                                    return null;
+//                                  },
+//                                  style: TextStyle(
+//                                    color: Colors.black,
+//                                  ),
+//                                  decoration: InputDecoration(
+//                                      hintText: "Digite sua senha",
+//                                      border: InputBorder.none,
+//                                      contentPadding: EdgeInsets.symmetric(
+//                                          vertical: 15, horizontal: 15),
+//                                      suffixIcon: GestureDetector(
+//                                        onTap: () {
+//                                          setState(() {
+//                                            hidePassword = !hidePassword;
+//                                          });
+//                                        },
+//                                        child: hidePassword? Container(
+//                                          child: SvgPicture.asset(
+//                                            'assets/login/iconEye.svg',
+//                                            width: 2,
+//                                            height: 2,
+//                                          ),
+//                                        ):
+//                                        Container(
+//                                          child: SvgPicture.asset(
+//                                            'assets/login/iconEyeOculto.svg',
+//                                            width: 2,
+//                                            height: 2,
+//                                          ),
+//                                        ),
+//                                      )),
+//                                  obscureText: hidePassword,
+//                                ),
+                            CustomroundedContainer(height: height * 0.07,width: width,),
+                              CustomTextField(
+                              validator: (password) {
+                                  if (password.isEmpty) {
+                                    return 'Campo senha vazio!';
+                                  }
+                                  if (password.length < 9) {
+                                    return 'No mínimo 8 carácteres!';
+                                  }
+                                  return null;
+                                },
+
+                                hint: "Oi",
+                              ),
+                            ],
                           ),
                           SizedBox(
                             height: height * 0.05,
