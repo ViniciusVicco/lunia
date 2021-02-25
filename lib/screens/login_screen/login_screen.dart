@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lunia/screens/comom_widgets/background_widgets/background_container_widget.dart';
 import 'package:lunia/screens/comom_widgets/background_widgets/custom_clipper.dart';
@@ -43,146 +44,145 @@ class _LoginScreenState extends State<LoginScreen> {
                         )
                     ),
                   ),
-
-
                 ],
               ),
-              Container(
-                height: height*0.7,
-                color: Colors.white,
-                //Clipar este cara aqui
+              ClipPath(
+                clipper: WaveClipperTwo(),
+                child: Container(
+                  height: height*0.7,
+                  color: Colors.white,
+                  //Clipar este cara aqui
+                ),
               ),
               Center(
-                child: ClipPath(
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: height * 0.04,
-                      ),
-                      Container(
-                        width: width * 0.8,
-                        child: Form(
-                          key: formKey,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  CustomTextTittle(
-                                    text: "Logue",
-                                  ),
-                                  Container(
-                                    child: SvgPicture.asset(
-                                        'assets/login/estrelas.svg'),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: height * 0.03,
-                              ),
-                              CustomTextHint(text: "Seu e-mail"),
-                              SizedBox(
-                                height: height * 0.01,
-                              ),
-                              CustomroundedContainer(
-                                child: TextFormField(
-                                  maxLines: 1,
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: height * 0.04,
+                    ),
+                    Container(
+                      width: width * 0.8,
+                      child: Form(
+                        key: formKey,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                CustomTextTittle(
+                                  text: "Logue",
+                                ),
+                                Container(
+                                  child: SvgPicture.asset(
+                                      'assets/login/estrelas.svg'),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: height * 0.03,
+                            ),
+                            CustomTextHint(text: "Seu e-mail"),
+                            SizedBox(
+                              height: height * 0.01,
+                            ),
+                            Stack(
+                              children: [
+                                CustomroundedContainer(
+                                  height: height * 0.07,
+                                  width: width,
+                                ),
+                                CustomTextField(
+                                  hint: 'seuEmail@email.com',
+                                  errorText: 'E-mail inválido',
                                   validator: (email) {
                                     if (email.isEmpty) {
-                                      return 'Campo e-mail vazio!';
+                                      return 'Campo Vazio!';
                                     }
-                                    if (!email.contains('@')) {
+                                    if (!email.contains('@')&&(!email.contains('.'))) {
                                       return 'E-mail incorreto!';
-                                    }
-                                    if (email.length < 9) {
-                                      return 'E-mail inválido!';
                                     }
                                     return null;
                                   },
-                                  style: TextStyle(color: Colors.black),
-                                  decoration: InputDecoration(
-                                    alignLabelWithHint: true,
-                                    hintText: "Digite seu e-mail",
-                                    border: InputBorder.none,
-                                    contentPadding: EdgeInsets.all(10),
+
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: height * 0.025,
+                            ),
+                            CustomTextHint(text: "Senha"),
+                            SizedBox(
+                              height: height * 0.01,
+                            ),
+                            Stack(
+                              children: [
+                                CustomroundedContainer(
+                                  height: height * 0.07,
+                                  width: width,
+                                ),
+                                CustomTextField(
+                                  hint: "********",
+                                  errorText: 'No mínimo 8 carácteres!',
+                                  validator: (password) {
+                                    if (password.isEmpty) {
+                                      return 'Campo senha vazio!';
+                                    }
+                                    if (password.length < 9) {
+                                      return 'No mínimo 8 carácteres!';
+                                    }
+                                    return null;
+                                  },
+
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: height * 0.02,
+                            ),
+                            Row(
+                              children: [
+                                Text("Não tem uma conta ?"),
+                                SizedBox(
+                                  width: width * 0.01,
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.of(context)
+                                        .pushNamed('/register1');
+                                  },
+                                  child: Text(
+                                    "Cadastre-se",
+                                    style: TextStyle(
+                                      color: selectedColor,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              SizedBox(
-                                height: height * 0.025,
-                              ),
-                              CustomTextHint(text: "Senha"),
-                              SizedBox(
-                                height: height * 0.01,
-                              ),
-                              Stack(
-                                children: [
-                                  CustomroundedContainer(
-                                    height: height * 0.07,
-                                    width: width,
-                                  ),
-                                  CustomTextField(
-                                    validator: (password) {
-                                      if (password.isEmpty) {
-                                        return 'Campo senha vazio!';
-                                      }
-                                      if (password.length < 9) {
-                                        return 'No mínimo 8 carácteres!';
-                                      }
-                                      return null;
-                                    },
-                                    hint: "Oi",
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: height * 0.05,
-                              ),
-                              Row(
-                                children: [
-                                  Text("Não tem uma conta ?"),
-                                  SizedBox(
-                                    width: width * 0.01,
-                                  ),
-                                  GestureDetector(
+                                SizedBox(
+                                  width: width * 0.08,
+                                ),
+                                InkWell(
+                                  child: GestureDetector(
                                     onTap: () {
-                                      Navigator.of(context)
-                                          .pushNamed('/register1');
+                                      if (formKey.currentState.validate()) {
+                                        print("Formulário Validado");
+                                      }
                                     },
-                                    child: Text(
-                                      "Cadastre-se",
-                                      style: TextStyle(
-                                        color: selectedColor,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
+                                    child: Container(
+                                        child: SvgPicture.asset(
+                                            'assets/login/loginIcon.svg')),
                                   ),
-                                  SizedBox(
-                                    width: width * 0.05,
-                                  ),
-                                  InkWell(
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        if (formKey.currentState.validate()) {
-                                          print("Formulário Validado");
-                                        }
-                                      },
-                                      child: Container(
-                                          child: SvgPicture.asset(
-                                              'assets/login/loginIcon.svg')),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: height * 0.05,
-                              )
-                            ],
-                          ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: height * 0.05,
+                            )
+                          ],
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ],

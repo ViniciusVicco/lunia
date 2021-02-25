@@ -7,7 +7,8 @@ class CustomTextField extends StatelessWidget {
     this.hint,
     this.textInputType,
     this.inputFormatters,
-    this.validator
+    this.validator,
+    this.errorText,
   });
 
   final bool bold;
@@ -15,6 +16,7 @@ class CustomTextField extends StatelessWidget {
   final TextInputType textInputType;
   final List<TextInputFormatter> inputFormatters;
   final FormFieldValidator<String> validator;
+  final String errorText;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,7 @@ class CustomTextField extends StatelessWidget {
                 ),
                 decoration: InputDecoration(
                   alignLabelWithHint: true,
-                  hintText: "Digite seu e-mail",
+                  hintText: hint,
                   border: InputBorder.none,
                   contentPadding: EdgeInsets.all(10),
                 ),
@@ -46,17 +48,23 @@ class CustomTextField extends StatelessWidget {
                   state.didChange(text);
                 },
               ),
-              Row(
-                children: [
-                  if(state.hasError)
-                    const Text(
-                      'Inválido',
-                      style: TextStyle(
-                        color: Colors.red,
-                        fontSize: 9,
-                      ),
-                    ),
-                ],
+              Offstage(
+                offstage: !state.hasError,
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(0, 8, 10, 0),
+                  child: Row(
+                    children: [
+                        Icon(Icons.close, color: Colors.red,),
+                        Text(
+                            '$errorText',
+                          style: TextStyle(
+                            color: Colors.red,
+                            fontSize: 14,
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
               ),
             ],
           ),
