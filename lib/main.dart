@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.white,
         primarySwatch: Colors.blue,
+        accentColor: Color(0xff825904),
         colorScheme: ColorScheme.light(primary: const Color(0xff825904)),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),

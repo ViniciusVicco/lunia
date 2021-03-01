@@ -3,7 +3,8 @@ import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 
 class CustomClipperBackgrounded extends StatelessWidget {
   final Widget child;
-  CustomClipperBackgrounded({this.child});
+  final double maxHeightporcentage;
+  CustomClipperBackgrounded({this.child, this.maxHeightporcentage});
   @override
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
@@ -24,7 +25,7 @@ class CustomClipperBackgrounded extends StatelessWidget {
       ClipPath(
         clipper: WaveClipperTwo(),
         child: Container(
-          height: height * 0.7,
+          height: maxHeightporcentage ?? height * 0.7,
           color: Colors.white,
           //Clipar este cara aqui
         ),

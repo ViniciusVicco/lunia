@@ -17,6 +17,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     final double width = MediaQuery.of(context).size.width;
     final double height = MediaQuery.of(context).size.height;
     final Color selectedColor = Theme.of(context).colorScheme.primary;
@@ -139,8 +140,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               height: height * 0.012,
                             ),
                             GestureDetector(
-                              onTap: () {
-                                _selectDate(context);
+                              onTap: () async {
+                            _selectDate(context);
                               },
                               child: Container(
                                 alignment: Alignment.center,

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:lunia/constrants/dart/device.dart';
 import 'package:lunia/screens/comom_widgets/background_widgets/custom_clipper_backgrounded.dart';
 import 'package:lunia/screens/comom_widgets/custom_rounded_container.dart';
 import 'package:lunia/screens/comom_widgets/custom_texts.dart';
+import 'package:lunia/screens/comom_widgets/eye_icon_for_textfield.dart';
 import 'package:lunia/screens/comom_widgets/form_field_widget.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -68,6 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 width: width,
                               ),
                               CustomTextField(
+
                                 hint: 'seuEmail@email.com',
                                 errorText: 'E-mail inválido',
                                 validator: (email) {
@@ -97,6 +97,15 @@ class _LoginScreenState extends State<LoginScreen> {
                                 width: width,
                               ),
                               CustomTextField(
+                                hidePassword: hidePassword,
+                                sulfixIcon: GestureDetector(
+                                  onTap: (){
+                                  setState(() {
+                                    hidePassword = !hidePassword;
+                                  });
+                                    },
+                                  child: EyeIconForTextField(isObscured: hidePassword,)
+                                ),
                                 hint: "********",
                                 errorText: 'No mínimo 8 carácteres!',
                                 validator: (password) {
@@ -112,7 +121,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ],
                           ),
                           SizedBox(
-                            height: height * 0.02,
+                            height: height * 0.05,
                           ),
                           Row(
                             children: [
