@@ -65,7 +65,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 ),
                                 Container(
                                   child: SvgPicture.asset(
-                                      'assets/login/estrelas.svg'),
+                                      'assets/login_register/estrelas.svg'),
                                 )
                               ],
                             ),
@@ -79,6 +79,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               height: height * 0.01,
                             ),
                             CustomroundedContainer(
+                              height: height*0.07,
                               child: TextFormField(
                                 style: TextStyle(color: selectedColor),
                                 decoration: InputDecoration(
@@ -177,6 +178,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               children: [
                                 CustomTextHint(text: "Já tem uma conta ? "),
                                 GestureDetector(
+                                  onTap: () {Navigator.of(context).pop();},
                                     child: Text(
                                   "Logue Aqui",
                                   style: TextStyle(

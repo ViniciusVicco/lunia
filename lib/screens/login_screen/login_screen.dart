@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lunia/screens/comom_widgets/background_widgets/custom_clipper_backgrounded.dart';
 import 'package:lunia/screens/comom_widgets/custom_rounded_container.dart';
 import 'package:lunia/screens/comom_widgets/custom_texts.dart';
-import 'package:lunia/screens/comom_widgets/eye_icon_for_textfield.dart';
+import 'package:lunia/screens/comom_widgets/eye_icon_for_textfield_aligned_top.dart';
 import 'package:lunia/screens/comom_widgets/form_field_widget.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -49,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               Container(
                                 child: SvgPicture.asset(
-                                    'assets/login/estrelas.svg'),
+                                    'assets/login_register/estrelas.svg'),
                               ),
                             ],
                           ),
@@ -67,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 width: width,
                               ),
                               CustomTextField(
-
+                                topPadding: 0,
                                 hint: 'seuEmail@email.com',
                                 errorText: 'E-mail inválido',
                                 validator: (email) {
@@ -97,6 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 width: width,
                               ),
                               CustomTextField(
+                                topPadding: 5,
                                 hidePassword: hidePassword,
                                 sulfixIcon: GestureDetector(
                                   onTap: (){
@@ -104,9 +105,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                     hidePassword = !hidePassword;
                                   });
                                     },
-                                  child: EyeIconForTextField(isObscured: hidePassword,)
+                                  child: EyeIconForTextFieldAlignedTop(isObscured: hidePassword,)
                                 ),
-                                hint: "********",
+                                hint: "Digite sua senha",
                                 errorText: 'No mínimo 8 carácteres!',
                                 validator: (password) {
                                   if (password.isEmpty) {
@@ -121,11 +122,11 @@ class _LoginScreenState extends State<LoginScreen> {
                             ],
                           ),
                           SizedBox(
-                            height: height * 0.05,
+                            height: height * 0.03,
                           ),
                           Row(
                             children: [
-                              Text("Não tem uma conta ?"),
+                              CustomTextHint(text: "Não tem uma conta ?"),
                               SizedBox(
                                 width: width * 0.01,
                               ),
@@ -153,7 +154,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   },
                                   child: Container(
                                       child: SvgPicture.asset(
-                                          'assets/login/loginIcon.svg')),
+                                          'assets/login_register/loginIcon.svg')),
                                 ),
                               ),
                             ],

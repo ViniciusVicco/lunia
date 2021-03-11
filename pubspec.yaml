@@ -44,12 +44,14 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-  - assets/login/estrelas.svg
-  - assets/login/loginIcon.svg
-  - assets/login/iconEye.svg
+  - assets/login_register/estrelas.svg
+  - assets/login_register/loginIcon.svg
+  - assets/login_register/iconEye.svg
+  - assets/login_register/iconEyeOculto.svg
+  - assets/login_register/iconEyeAlignCenter.svg
   - assets/comom/fundo.svg
   - assets/comom/fundo.png
-  - assets/login/iconEyeOculto.svg
+  - assets/comom/btnRetornar.svg
   - assets/comom/btnProsseguir.svg
 
 
