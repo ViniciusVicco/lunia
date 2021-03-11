@@ -155,7 +155,7 @@ class _RegisterScreen2State extends State<RegisterScreen2> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         GestureDetector(child: SvgPicture.asset('assets/comom/btnRetornar.svg'), onTap: () {Navigator.of(context).pop();},),
-                        GestureDetector(child: SvgPicture.asset('assets/comom/btnProsseguir.svg'), onTap: () {},),
+                        GestureDetector(child: SvgPicture.asset('assets/comom/btnProsseguir.svg'), onTap: () {Navigator.of(context).pushNamed('/knowledge_start_screen');},),
 
                       ],
                     )

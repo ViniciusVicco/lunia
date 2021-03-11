@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lunia/screens/knowlege_test_screens/knowledge_start_screen.dart';
 import 'package:lunia/screens/login_screen/login_screen.dart';
 import 'package:lunia/screens/register_screens/register_screen.dart';
 import 'package:lunia/screens/register_screens/register_screen2.dart';
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => LoginScreen(),
         '/register1': (context) => RegisterScreen(),
         '/register2': (context) => RegisterScreen2(),
+        '/knowledge_start_screen': (context) => KnowledgeStartScreen(),
       },
       theme: ThemeData(
         primaryColor: Colors.white,
