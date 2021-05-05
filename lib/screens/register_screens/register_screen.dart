@@ -17,21 +17,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     final double width = MediaQuery.of(context).size.width;
     final double height = MediaQuery.of(context).size.height;
     final Color selectedColor = Theme.of(context).colorScheme.primary;
 
     _selectDate(BuildContext context) async {
       final DateTime picked = await showDatePicker(
-          context: context,
-          initialDate: _dateTime,
-          firstDate: DateTime(1880),
-          lastDate: DateTime.now(),
-          initialDatePickerMode: DatePickerMode.year,
-          cancelText: 'Cancelar',
-          confirmText: 'Confirmar',
-          helpText: 'Selecione a data de nascimento',
+        context: context,
+        initialDate: _dateTime,
+        firstDate: DateTime(1880),
+        lastDate: DateTime.now(),
+        initialDatePickerMode: DatePickerMode.year,
+        cancelText: 'Cancelar',
+        confirmText: 'Confirmar',
+        helpText: 'Selecione a data de nascimento',
       );
       if (picked != null && picked != _dateTime)
         setState(() {
@@ -40,10 +39,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
     }
 
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
-      backgroundColor: Colors.white,
-      body:
-          CustomClipperBackgrounded(
+        backgroundColor: Colors.white,
+        body: SingleChildScrollView(
+          child: CustomClipperBackgrounded(
             child: Center(
               child: ClipPath(
                 child: Column(
@@ -79,7 +77,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               height: height * 0.01,
                             ),
                             CustomroundedContainer(
-                              height: height*0.07,
+                              height: height * 0.07,
                               child: TextFormField(
                                 style: TextStyle(color: selectedColor),
                                 decoration: InputDecoration(
@@ -142,7 +140,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                             GestureDetector(
                               onTap: () async {
-                            _selectDate(context);
+                                _selectDate(context);
                               },
                               child: Container(
                                 alignment: Alignment.center,
@@ -178,19 +176,23 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               children: [
                                 CustomTextHint(text: "Já tem uma conta ? "),
                                 GestureDetector(
-                                  onTap: () {Navigator.of(context).pop();},
+                                    onTap: () {
+                                      Navigator.of(context).pop();
+                                    },
                                     child: Text(
-                                  "Logue Aqui",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: selectedColor,
-                                  ),
-                                )),
+                                      "Logue Aqui",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: selectedColor,
+                                      ),
+                                    )),
                                 SizedBox(
                                   width: width * 0.1,
                                 ),
                                 GestureDetector(
-                                  onTap: () { Navigator.of(context).pushNamed('/register2');
+                                  onTap: () {
+                                    Navigator.of(context)
+                                        .pushNamed('/register2');
                                   },
                                   child: Container(
                                     child: SvgPicture.asset(
@@ -207,7 +209,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
               ),
             ),
-          )
-    );
+          ),
+        ));
   }
 }

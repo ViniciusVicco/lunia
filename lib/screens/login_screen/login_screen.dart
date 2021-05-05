@@ -23,150 +23,154 @@ class _LoginScreenState extends State<LoginScreen> {
     final Color selectedColor = Color(0xff825904);
 
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       drawer: Drawer(),
-      resizeToAvoidBottomPadding: false,
       backgroundColor: Colors.white,
-      body: ClipPath(
-        child: Container(
-          child: CustomClipperBackgrounded(
-            child: Center(
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: height * 0.04,
-                  ),
-                  Container(
-                    width: width * 0.8,
-                    child: Form(
-                      key: formKey,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              CustomTextTittle(
-                                text: "Logue",
-                              ),
-                              Container(
-                                child: SvgPicture.asset(
-                                    'assets/login_register/estrelas.svg'),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: height * 0.03,
-                          ),
-                          CustomTextHint(text: "Seu e-mail"),
-                          SizedBox(
-                            height: height * 0.01,
-                          ),
-                          Stack(
-                            children: [
-                              CustomroundedContainer(
-                                height: height * 0.07,
-                                width: width,
-                              ),
-                              CustomTextField(
-                                topPadding: 0,
-                                hint: 'seuEmail@email.com',
-                                errorText: 'E-mail inválido',
-                                validator: (email) {
-                                  if (email.isEmpty) {
-                                    return 'Campo Vazio!';
-                                  }
-                                  if (!email.contains('@') &&
-                                      (!email.contains('.'))) {
-                                    return 'E-mail incorreto!';
-                                  }
-                                  return null;
-                                },
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: height * 0.025,
-                          ),
-                          CustomTextHint(text: "Senha"),
-                          SizedBox(
-                            height: height * 0.01,
-                          ),
-                          Stack(
-                            children: [
-                              CustomroundedContainer(
-                                height: height * 0.07,
-                                width: width,
-                              ),
-                              CustomTextField(
-                                topPadding: 5,
-                                hidePassword: hidePassword,
-                                sulfixIcon: GestureDetector(
-                                  onTap: (){
-                                  setState(() {
-                                    hidePassword = !hidePassword;
-                                  });
-                                    },
-                                  child: EyeIconForTextFieldAlignedTop(isObscured: hidePassword,)
+      body: SingleChildScrollView(
+        child: ClipPath(
+          child: Container(
+            child: CustomClipperBackgrounded(
+              child: Center(
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: height * 0.04,
+                    ),
+                    Container(
+                      width: width * 0.8,
+                      child: Form(
+                        key: formKey,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                CustomTextTittle(
+                                  text: "Logue",
                                 ),
-                                hint: "Digite sua senha",
-                                errorText: 'No mínimo 8 carácteres!',
-                                validator: (password) {
-                                  if (password.isEmpty) {
-                                    return 'Campo senha vazio!';
-                                  }
-                                  if (password.length < 9) {
-                                    return 'No mínimo 8 carácteres!';
-                                  }
-                                  return null;
-                                },
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: height * 0.03,
-                          ),
-                          Row(
-                            children: [
-                              CustomTextHint(text: "Não tem uma conta ?"),
-                              SizedBox(
-                                width: width * 0.01,
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.of(context).pushNamed('/register1');
-                                },
-                                child: Text(
-                                  "Cadastre-se",
-                                  style: TextStyle(
-                                    color: selectedColor,
-                                    fontWeight: FontWeight.bold,
+                                Container(
+                                  child: SvgPicture.asset(
+                                      'assets/login_register/estrelas.svg'),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: height * 0.03,
+                            ),
+                            CustomTextHint(text: "Seu e-mail"),
+                            SizedBox(
+                              height: height * 0.01,
+                            ),
+                            Stack(
+                              children: [
+                                CustomroundedContainer(
+                                  height: height * 0.07,
+                                  width: width,
+                                ),
+                                CustomTextField(
+                                  topPadding: 0,
+                                  hint: 'seuEmail@email.com',
+                                  errorText: 'E-mail inválido',
+                                  validator: (email) {
+                                    if (email.isEmpty) {
+                                      return 'Campo Vazio!';
+                                    }
+                                    if (!email.contains('@') &&
+                                        (!email.contains('.'))) {
+                                      return 'E-mail incorreto!';
+                                    }
+                                    return null;
+                                  },
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: height * 0.025,
+                            ),
+                            CustomTextHint(text: "Senha"),
+                            SizedBox(
+                              height: height * 0.01,
+                            ),
+                            Stack(
+                              children: [
+                                CustomroundedContainer(
+                                  height: height * 0.07,
+                                  width: width,
+                                ),
+                                CustomTextField(
+                                  topPadding: 5,
+                                  hidePassword: hidePassword,
+                                  sulfixIcon: GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          hidePassword = !hidePassword;
+                                        });
+                                      },
+                                      child: EyeIconForTextFieldAlignedTop(
+                                        isObscured: hidePassword,
+                                      )),
+                                  hint: "Digite sua senha",
+                                  errorText: 'No mínimo 8 carácteres!',
+                                  validator: (password) {
+                                    if (password.isEmpty) {
+                                      return 'Campo senha vazio!';
+                                    }
+                                    if (password.length < 9) {
+                                      return 'No mínimo 8 carácteres!';
+                                    }
+                                    return null;
+                                  },
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: height * 0.03,
+                            ),
+                            Row(
+                              children: [
+                                CustomTextHint(text: "Não tem uma conta ?"),
+                                SizedBox(
+                                  width: width * 0.01,
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.of(context)
+                                        .pushNamed('/register1');
+                                  },
+                                  child: Text(
+                                    "Cadastre-se",
+                                    style: TextStyle(
+                                      color: selectedColor,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              SizedBox(
-                                width: width * 0.08,
-                              ),
-                              InkWell(
-                                child: GestureDetector(
-                                  onTap: () {
-                                    if (formKey.currentState.validate()) {
-                                      print("Formulário Validado");
-                                    }
-                                  },
-                                  child: Container(
-                                      child: SvgPicture.asset(
-                                          'assets/login_register/loginIcon.svg')),
+                                SizedBox(
+                                  width: width * 0.08,
                                 ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: height * 0.05,
-                          )
-                        ],
+                                InkWell(
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      if (formKey.currentState.validate()) {
+                                        print("Formulário Validado");
+                                      }
+                                    },
+                                    child: Container(
+                                        child: SvgPicture.asset(
+                                            'assets/login_register/loginIcon.svg')),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: height * 0.05,
+                            )
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

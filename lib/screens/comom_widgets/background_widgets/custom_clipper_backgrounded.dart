@@ -3,8 +3,9 @@ import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 
 class CustomClipperBackgrounded extends StatelessWidget {
   final Widget child;
-  final double maxHeightporcentage;
-  CustomClipperBackgrounded({this.child, this.maxHeightporcentage});
+  final double maxHeight;
+  final FractionalOffset fractionalOffset;
+  CustomClipperBackgrounded({this.child, this.maxHeight, this.fractionalOffset});
   @override
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
@@ -17,7 +18,7 @@ class CustomClipperBackgrounded extends StatelessWidget {
             decoration: BoxDecoration(
                 image: DecorationImage(
                     fit: BoxFit.fitWidth,
-                    alignment: FractionalOffset.bottomCenter,
+                    alignment: fractionalOffset?? FractionalOffset.bottomCenter,
                     image: AssetImage('assets/comom/fundo.png'))),
           ),
         ],
@@ -25,7 +26,7 @@ class CustomClipperBackgrounded extends StatelessWidget {
       ClipPath(
         clipper: WaveClipperTwo(),
         child: Container(
-          height: maxHeightporcentage ?? height * 0.7,
+          height: maxHeight ?? height * 0.7,
           color: Colors.white,
           //Clipar este cara aqui
         ),

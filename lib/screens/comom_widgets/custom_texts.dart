@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class CustomTextHint extends StatelessWidget {
   final String text;
   final double size;
+  final Color color;
 
-  CustomTextHint({@required this.text, this.size});
+  CustomTextHint({@required this.text, this.size, this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,7 @@ class CustomTextHint extends StatelessWidget {
       text,
       style: TextStyle(
         fontSize: size?? 14,
-        color: Colors.grey[500],
+        color: color?? Colors.grey[500],
       ),
     );
   }
