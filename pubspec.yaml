@@ -32,7 +32,9 @@ dependencies:
   # Gerando Store:
   # slidy g mbx modules/nomedoModule/nomeDoStore
   # Gerando Paginas:
-  # slidy generate page modules/nomedoModule/authentication 
+  # slidy generate page modules/nomeDoModule/nomeDaPage
+  # Gerando repository:
+  # slidy g r modules/nomeDoModule/nomeDoRepository
   cupertino_icons: ^1.0.0
   flutter_custom_clippers: ^1.1.2
   flutter_svg: ^0.22.0

@@ -19,7 +19,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore> {
         title: Text('Counter'),
       ),
       body: Observer(
-        builder: (context) => Text('${store.counter}'),
+        builder: (context) => Center(child: Text('${store.counter}')),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
