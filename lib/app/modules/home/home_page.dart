@@ -6,7 +6,7 @@ import 'package:lunia/app/modules/home/home_store.dart';
 class HomePage extends StatefulWidget {
   final String title;
   const HomePage({Key key, this.title = "Home"}) : super(key: key);
-
+  static const routeName = "/HomePage";
   @override
   _HomePageState createState() => _HomePageState();
 }

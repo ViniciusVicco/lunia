@@ -4,6 +4,7 @@ class AuthenticationPage extends StatefulWidget {
   final String title;
   const AuthenticationPage({Key key, this.title = 'AuthenticationPage'})
       : super(key: key);
+  static const routeName = "/AuthenticationPage";
   @override
   AuthenticationPageState createState() => AuthenticationPageState();
 }
