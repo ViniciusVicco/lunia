@@ -43,10 +43,6 @@ dependencies:
   flutter_modular: ^3.2.0
   flutter_mobx: ^2.0.0
 
-  
-
-
-
 dev_dependencies:
   flutter_modular_test: ^1.0.1
   flutter_test:
@@ -70,6 +66,7 @@ flutter:
   - assets/comom/btnRetornar.svg
   - assets/comom/btnProsseguir.svg
   - assets/knowledge_test/knowledgeTestArt.svg
+  - assets/initial_page/initialScreen.svg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

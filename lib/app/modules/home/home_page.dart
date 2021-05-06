@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:lunia/app/modules/authentication/authentication_page.dart';
 import 'package:lunia/app/modules/home/home_store.dart';
+import 'package:lunia/constrants/dart/device.dart';
 
 class HomePage extends StatefulWidget {
   final String title;
@@ -11,22 +13,46 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends ModularState<HomePage, HomeStore> {
+class _HomePageState extends ModularState<HomePage, HomeStore>
+    with SingleTickerProviderStateMixin {
+  AnimationController _animationController;
+  Animation _colorAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      duration: Duration(milliseconds: 2500),
+      vsync: this,
+    );
+    _colorAnimation = ColorTween(begin: Colors.white, end: Colors.red)
+        .animate(_animationController);
+    _animationController.forward();
+    _animationController.addListener(() {
+      print(_animationController.value);
+      print(_colorAnimation.value);
+      if (_animationController.value >= 1) {
+        Modular.to.pushNamed(AuthenticationPage.routeName);
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Counter'),
-      ),
-      body: Observer(
-        builder: (context) => Center(child: Text('${store.counter}')),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          store.increment();
-        },
-        child: Icon(Icons.add),
-      ),
-    );
+    Device.init(context);
+    return AnimatedBuilder(
+        animation: _animationController,
+        builder: (BuildContext context, _) {
+          return Scaffold(
+            body: Center(
+              child: Container(
+                child: Transform.scale(
+                    scale: 0.5 + _animationController.value,
+                    child: SvgPicture.asset(
+                        "assets/initial_page/initialScreen.svg")),
+              ),
+            ),
+          );
+        });
   }
 }
