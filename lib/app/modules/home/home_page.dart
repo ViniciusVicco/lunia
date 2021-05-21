@@ -20,6 +20,7 @@ class _HomePageState extends ModularState<HomePage, HomeStore>
 
   @override
   void initState() {
+    controller.insertTest();
     super.initState();
     _animationController = AnimationController(
       duration: Duration(milliseconds: 2500),
