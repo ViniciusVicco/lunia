@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "888439094121",
+    "project_id": "lunia-7e0b4",
+    "storage_bucket": "lunia-7e0b4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:888439094121:android:3870844a37fbb2133c9bf8",
+        "android_client_info": {
+          "package_name": "com.vicco.lunia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "888439094121-r48l3731dg5m5bagb93eb26mvl129tdg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4ElbsBBfuNibS34wnONDvpRzFc__BkFo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "888439094121-r48l3731dg5m5bagb93eb26mvl129tdg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "888439094121-25c40ce9et078151ia0ksavcii07i72v.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.vicco.lunia"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

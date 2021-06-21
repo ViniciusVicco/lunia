@@ -5,10 +5,10 @@ class CustomClipperBackgrounded extends StatelessWidget {
   final Widget child;
   final double maxHeight;
   final FractionalOffset fractionalOffset;
-  CustomClipperBackgrounded({this.child, this.maxHeight, this.fractionalOffset});
+  CustomClipperBackgrounded(
+      {this.child, this.maxHeight, this.fractionalOffset});
   @override
   Widget build(BuildContext context) {
-    final double width = MediaQuery.of(context).size.width;
     final double height = MediaQuery.of(context).size.height;
     return Stack(children: [
       Column(
@@ -18,7 +18,8 @@ class CustomClipperBackgrounded extends StatelessWidget {
             decoration: BoxDecoration(
                 image: DecorationImage(
                     fit: BoxFit.fitWidth,
-                    alignment: fractionalOffset?? FractionalOffset.bottomCenter,
+                    alignment:
+                        fractionalOffset ?? FractionalOffset.bottomCenter,
                     image: AssetImage('assets/comom/fundo.png'))),
           ),
         ],

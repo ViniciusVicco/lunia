@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:lunia/screens/comom_widgets/background_widgets/custom_clipper_backgrounded.dart';
-import 'package:lunia/screens/comom_widgets/custom_rounded_container.dart';
-import 'package:lunia/screens/comom_widgets/custom_texts.dart';
-import 'package:lunia/screens/comom_widgets/rounded_container.dart';
+import 'package:lunia/app/comom_widgets/background_widgets/custom_clipper_backgrounded.dart';
+import 'package:lunia/app/comom_widgets/custom_rounded_container.dart';
+import 'package:lunia/app/comom_widgets/custom_texts.dart';
+import 'package:lunia/app/comom_widgets/rounded_container.dart';
+import 'package:lunia/app/modules/register/register_module.dart';
+import 'package:lunia/app/modules/register/register_page_second.dart';
 
-class RegisterScreen extends StatefulWidget {
+class RegisterPage extends StatefulWidget {
+  static const String routeName = "/RegisterPage";
   @override
-  _RegisterScreenState createState() => _RegisterScreenState();
+  _RegisterPageState createState() => _RegisterPageState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _RegisterPageState extends State<RegisterPage> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   DateTime _dateTime = DateTime.now();
@@ -191,8 +194,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 ),
                                 GestureDetector(
                                   onTap: () {
-                                    Navigator.of(context)
-                                        .pushNamed('/register2');
+                                    Navigator.of(context).pushNamed(
+                                        RegisterModule.routeName +
+                                            RegisterPageSecond.routeName);
                                   },
                                   child: Container(
                                     child: SvgPicture.asset(

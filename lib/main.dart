@@ -1,38 +1,20 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:lunia/screens/knowlege_test_screens/knowledge_start_screen.dart';
-import 'package:lunia/screens/login_screen/login_screen.dart';
-import 'package:lunia/screens/register_screens/register_screen.dart';
-import 'package:lunia/screens/register_screens/register_screen2.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'app/app_module.dart';
+import 'app/app_widget.dart';
 
-
-void main() {
-  runApp(MyApp());
-
-}
-
-class MyApp extends StatelessWidget {
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-
-      color: Colors.white,
-      title: 'Flutter Demo',
-      routes: {
-        '/': (context) => LoginScreen(),
-        '/register1': (context) => RegisterScreen(),
-        '/register2': (context) => RegisterScreen2(),
-        '/knowledge_start_screen': (context) => KnowledgeStartScreen(),
-      },
-      theme: ThemeData(
-        primaryColor: Colors.white,
-        primarySwatch: Colors.blue,
-        accentColor: Color(0xff825904),
-        colorScheme: ColorScheme.light(primary: const Color(0xff825904)),
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      initialRoute: '/',
+bool USE_FIRESTORE_EMULATOR = false;
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  if (USE_FIRESTORE_EMULATOR) {
+    FirebaseFirestore.instance.settings = const Settings(
+      host: 'localhost:8080',
+      sslEnabled: false,
+      persistenceEnabled: false,
     );
   }
+  runApp(ModularApp(module: AppModule(), child: AppWidget()));
 }
-
