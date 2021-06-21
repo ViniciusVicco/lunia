@@ -1,9 +1,10 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:lunia/app/modules/authentication/authentication_module.dart';
-import 'package:lunia/app/modules/authentication/authentication_page.dart';
+import 'package:lunia/app/modules/register/register_module.dart';
+
 import '../home/home_store.dart';
 
 import 'home_page.dart';
+import 'modules/authentication/authentication_module.dart';
 
 class HomeModule extends Module {
   @override
@@ -14,6 +15,7 @@ class HomeModule extends Module {
   @override
   final List<ModularRoute> routes = [
     ChildRoute(HomePage.routeName, child: (_, args) => HomePage()),
-    ModuleRoute(AuthenticationPage.routeName, module: AuthenticationModule())
+    ModuleRoute(AuthenticationModule.routeName, module: AuthenticationModule()),
+    ModuleRoute(RegisterModule.routeName, module: RegisterModule())
   ];
 }

@@ -1,9 +1,11 @@
-import 'package:lunia/app/modules/authentication/authentication_page.dart';
-import 'package:lunia/app/modules/authentication/authentication_repository.dart';
-import 'package:lunia/app/modules/authentication/authentication_store.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'authentication_page.dart';
+import 'authentication_repository.dart';
+import 'authentication_store.dart';
+
 class AuthenticationModule extends Module {
+  static const String routeName = "/AuthenticationModule";
   @override
   final List<Bind> binds = [
     Bind.lazySingleton((i) => AuthenticationRepository()),
@@ -13,6 +15,6 @@ class AuthenticationModule extends Module {
   @override
   final List<ModularRoute> routes = [
     ChildRoute(AuthenticationPage.routeName,
-        child: (_, args) => AuthenticationPage())
+        child: (_, args) => AuthenticationPage()),
   ];
 }

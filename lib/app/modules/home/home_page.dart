@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:lunia/app/modules/authentication/authentication_page.dart';
 import 'package:lunia/app/modules/home/home_store.dart';
 import 'package:lunia/constrants/dart/device.dart';
+import 'modules/authentication/authentication_module.dart';
+import 'modules/authentication/authentication_page.dart';
 
 class HomePage extends StatefulWidget {
   final String title;
@@ -33,7 +34,10 @@ class _HomePageState extends ModularState<HomePage, HomeStore>
       print(_animationController.value);
       print(_colorAnimation.value);
       if (_animationController.value >= 1) {
-        Modular.to.pushNamed(AuthenticationPage.routeName);
+        Modular.to.navigate(
+            AuthenticationModule.routeName + AuthenticationPage.routeName
+            //RegisterModule.routeName + RegisterPageSecond.routeName
+            );
       }
     });
   }
